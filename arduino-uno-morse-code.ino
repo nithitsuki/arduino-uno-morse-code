@@ -1,8 +1,8 @@
-#define MORSE_PIN 13
+#define MORSE_PIN 13 //set morse output pin
 #define UNIT_TIME 150 //Time of dot (dit) in ms
 #define MULTIPLYING_FACTOR 3 //How many times longer than dit for dah (dash)
 #define SPACE_TIME 420 // Time to wait for whitespaces in transmission
-#define DASH_TIME UNIT_TIME*MULTIPLYING FACTOR
+#define DASH_TIME UNIT_TIME*MULTIPLYING_FACTOR // leave this line alone
 void dot(int n)
 {
 	//enable SOS if invalid input
@@ -39,7 +39,7 @@ void dash(int n)
 	}
 }
 
-void convert(String mCode)
+void text_to_morse(String mCode)
 {
   for (int i = 0; i < mCode.length() + 1; i++) {
     switch (mCode.charAt(i)) {
@@ -159,6 +159,8 @@ void convert(String mCode)
       case ' ':
         delay(SPACE_TIME);
         break;
+	}
+}
 }
 
 void setup()
@@ -167,7 +169,7 @@ void setup()
 }
 
 
-Void loop() 
+void loop() 
 {
-	convert("Hello World")
+	text_to_morse("hello world");
 }
